@@ -1,19 +1,26 @@
 import '@/styles/globals.css'
-
+import Nav from '@/components/Nav'
+import Provider from '@/components/Provider'
 
 export const metadata = {
-          title: "Promptopia",
-          description: "The best place to find AI prompts.",
+  title: "Promptopia",
+  description: "The best place to find AI prompts.",
 }
 
-const RootLayout = () => {
+const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
-          <body>
-                    <div className='main'>
-                              
-                    </div>
-          </body>
+      <body>
+        <Provider>
+          <div className='main'>
+            <div className="gradient"></div>
+          </div>
+          <main className="app">
+            <Nav />
+            {children}
+          </main>
+        </Provider>
+      </body>
     </html>
   )
 }
