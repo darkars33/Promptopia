@@ -14,6 +14,7 @@ const connectToDB = async () =>{
                     dbName:'share_prompts',
                     useNewUrlParser: true,
                     useUnifiedTopology: true,
+                    serverSelectionTimeoutMS: 30000,
                 })    
                 isConnected = true;
 
