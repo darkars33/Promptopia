@@ -8,6 +8,15 @@ import { Suspense } from 'react';
 import Form from '@/components/Form'
 
 
+const Loading = () =>{
+          return(
+                    <div>
+                              Loading...
+                    </div>
+          )
+}
+
+
 const EditPrompt = () => {
 
           const router = useRouter();
@@ -65,7 +74,7 @@ const EditPrompt = () => {
           }
 
           return (
-                   <Suspense fallback={<div>Loading...</div>}>
+                   <Suspense fallback={<Loading />}>
                      <Form
                               type="Edit"
                               post={post}
