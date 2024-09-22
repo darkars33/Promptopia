@@ -19,9 +19,20 @@ const Feed = () => {
 
   const [searchText, setSearchText] = useState('')
   const [posts, setPosts] = useState([]);
-
+  const [allPosts, setAllPosts] = useState([]);
+ 
   const handleSearchChange = (e) => {
-    setSearchText(e.target.value)
+    const searchValue = e.target.value;
+    setSearchText(searchValue);
+
+    if(searchValue === ''){
+      setPosts(allPosts);
+    }else{
+      const filterPost = allPosts.filter((post) =>{
+        return (post.tag.includes(e.target.value) || post.creator.username.includes(e.target.value))
+      })
+      setPosts(filterPost);
+    } 
   }
 
   useEffect(() =>{
@@ -29,6 +40,7 @@ const Feed = () => {
       const res = await fetch('/api/prompt');
       const data = await res.json();
       setPosts(data);
+      setAllPosts(data);
     }
 
     fetchPosts();
